@@ -77,20 +77,28 @@ export class AdminProductsComponent implements OnInit {
     }
 
     if (this.editingId) {
-      // Update product
-      this.productService
-        .updateProduct(this.editingId, this.formData)
-        .subscribe({
-          next: () => {
-            alert('Product updated successfully');
-            this.loadProducts();
-            this.closeForm();
-          },
-          error: (err) => {
-            alert('Failed to update product');
-            console.error(err);
-          },
-        });
+      // Update product - need to get the full product to find the JSON Server id
+      const productToUpdate = this.products.find(
+        (p) => p.ProductID === this.editingId,
+      );
+      if (!productToUpdate) {
+        alert('Product not found');
+        return;
+      }
+
+      const updateId = productToUpdate.id || this.editingId;
+
+      this.productService.updateProduct(updateId, this.formData).subscribe({
+        next: () => {
+          alert('Product updated successfully');
+          this.loadProducts();
+          this.closeForm();
+        },
+        error: (err) => {
+          alert('Failed to update product');
+          console.error(err);
+        },
+      });
     } else {
       // Create product
       this.productService
@@ -109,9 +117,12 @@ export class AdminProductsComponent implements OnInit {
     }
   }
 
-  deleteProduct(id: number): void {
-    if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.deleteProduct(id).subscribe({
+  deleteProduct(product: Product): void {
+    if (confirm(`Are you sure you want to delete "${product.name}"?`)) {
+      // Use the 'id' field (JSON Server primary key), not ProductID
+      const productId = product.id || product.ProductID;
+
+      this.productService.deleteProduct(productId).subscribe({
         next: () => {
           alert('Product deleted successfully');
           this.loadProducts();

@@ -1,0 +1,86 @@
+<div class="admin-orders-container">
+  <h1>Manage Orders</h1>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading orders...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && !error && orders.length === 0" class="no-orders">
+    <p>No orders found</p>
+  </div>
+
+  <div *ngIf="!loading && !error && orders.length > 0" class="orders-list">
+    <div *ngFor="let order of orders; let i = index" class="order-card">
+      <div class="order-header" (click)="toggleExpand(order.OrderID)">
+        <div class="order-info">
+          <h3>Order #{{ order.OrderID }}</h3>
+          <span class="order-date">{{
+            order.orderDate | date: "MMM d, yyyy HH:mm"
+          }}</span>
+          <span class="user-id">User ID: {{ order.userID }}</span>
+        </div>
+        <div class="order-summary">
+          <span
+            class="status"
+            [style.background-color]="getStatusColor(order.status)"
+          >
+            {{ order.status | uppercase }}
+          </span>
+          <span class="amount">₱{{ order.totalAmount | number }}</span>
+        </div>
+        <button class="toggle-btn">
+          {{ expandedOrderId === order.OrderID ? "▼" : "▶" }}
+        </button>
+      </div>
+
+      <div *ngIf="expandedOrderId === order.OrderID" class="order-details">
+        <div class="status-update-section">
+          <label>Update Status:</label>
+          <select
+            (change)="
+              updateOrderStatus(order.OrderID, $any($event.target).value, i)
+            "
+          >
+            <option value="">Select new status</option>
+            <option value="processing">Processing</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <button (click)="deleteOrder(order.OrderID, i)" class="delete-btn">
+            Delete Order
+          </button>
+        </div>
+
+        <div class="order-info-grid">
+          <div class="info-item">
+            <span class="label">Order ID:</span>
+            <span class="value">{{ order.OrderID }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">User ID:</span>
+            <span class="value">{{ order.userID }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Total Amount:</span>
+            <span class="value">₱{{ order.totalAmount | number }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Order Date:</span>
+            <span class="value">{{ order.orderDate | date: "full" }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Status:</span>
+            <span class="value" [style.color]="getStatusColor(order.status)">
+              {{ order.status | uppercase }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

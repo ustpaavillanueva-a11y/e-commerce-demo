@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './components/pages/product-detail/produc
 import { CartComponent } from './components/pages/cart/cart.component';
 import { MyOrdersComponent } from './components/pages/my-orders/my-orders.component';
 import { AdminProductsComponent } from './components/pages/admin-products/admin-products.component';
+import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orders.component';
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -28,6 +29,7 @@ export const routes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'my-orders', component: MyOrdersComponent },
       { path: 'admin-products', component: AdminProductsComponent },
+      { path: 'admin-orders', component: AdminOrdersComponent },
     ],
   },
 ];

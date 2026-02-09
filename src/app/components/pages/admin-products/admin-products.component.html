@@ -34,10 +34,7 @@
           <td>₱{{ product.price | number }}</td>
           <td class="actions">
             <button (click)="openForm(product)" class="btn-edit">Edit</button>
-            <button
-              (click)="deleteProduct(product.ProductID)"
-              class="btn-delete"
-            >
+            <button (click)="deleteProduct(product)" class="btn-delete">
               Delete
             </button>
           </td>

@@ -15,8 +15,11 @@
 
       <div *ngIf="showDropdown" class="dropdown-menu">
         <div class="dropdown-header">
-          <p class="user-email">{{ user?.email }}</p>
-          <p class="user-id">ID: {{ user?.LoginID }}</p>
+          <p class="user-email">{{ user?.email || "User" }}</p>
+          <p class="user-role" *ngIf="user?.role">
+            Role: {{ user.role | uppercase }}
+          </p>
+          <p class="user-id" *ngIf="user?.LoginID">ID: {{ user.LoginID }}</p>
         </div>
         <hr />
         <button (click)="logout()" class="logout-btn">

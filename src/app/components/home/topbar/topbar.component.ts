@@ -23,7 +23,26 @@ export class TopbarComponent implements OnInit {
     if (typeof localStorage !== 'undefined') {
       const storedUser = localStorage.getItem('user');
       if (storedUser) {
-        this.user = JSON.parse(storedUser);
+        try {
+          const userData = JSON.parse(storedUser);
+          // Handle both old and new user data structure
+          if (userData.login) {
+            // New structure with login and profile
+            this.user = {
+              email: userData.login.email,
+              LoginID: userData.login.LoginID,
+              role: userData.profile?.role || 'user',
+              firstName: userData.profile?.firstName || '',
+              lastName: userData.profile?.lastName || '',
+              fullData: userData,
+            };
+          } else {
+            // Old structure
+            this.user = userData;
+          }
+        } catch (e) {
+          console.error('Error parsing user data:', e);
+        }
       }
     }
   }

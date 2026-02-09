@@ -7,6 +7,17 @@
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
   color: wheat;
 
+  .admin-header {
+    padding: 1rem 1.5rem;
+    margin: 0.5rem 0 0 0;
+    color: #667eea;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-left: 3px solid #667eea;
+  }
+
   nav ul {
     list-style: none;
     padding: 0;

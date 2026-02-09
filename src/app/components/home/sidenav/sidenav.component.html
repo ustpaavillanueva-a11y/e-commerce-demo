@@ -1,12 +1,21 @@
 <div class="sidenav">
   <nav>
-    <ul>
-      <li><a routerLink="/home/products">Products</a></li>
-      <li><a routerLink="/home/cart">Cart</a></li>
-      <li><a routerLink="/home/my-orders">My Orders</a></li>
-      <li><a routerLink="/home/admin-products">Admin Products</a></li>
-      <li><a routerLink="/home/reports">Reports</a></li>
-      <li><a routerLink="/home/settings">Settings</a></li>
-    </ul>
+    <!-- Menu for Customer and User roles -->
+    <div *ngIf="isCustomerOrUser()">
+      <ul>
+        <li><a routerLink="/home/products">Products</a></li>
+        <li><a routerLink="/home/cart">Cart</a></li>
+        <li><a routerLink="/home/my-orders">My Orders</a></li>
+      </ul>
+    </div>
+
+    <!-- Menu for Admin role -->
+    <div *ngIf="isAdmin()">
+      <h3 class="admin-header">Admin Dashboard</h3>
+      <ul>
+        <li><a routerLink="/home/admin-products">Products</a></li>
+        <li><a routerLink="/home/admin-orders">Orders</a></li>
+      </ul>
+    </div>
   </nav>
 </div>

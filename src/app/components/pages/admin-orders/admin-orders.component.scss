@@ -1,0 +1,212 @@
+.admin-orders-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  width: 65rem;
+
+  h1 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .loading,
+  .error,
+  .no-orders {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    p {
+      color: #666;
+      font-size: 1rem;
+    }
+  }
+
+  .error {
+    background-color: #fee;
+    border-left: 4px solid #c33;
+
+    p {
+      color: #c33;
+    }
+  }
+
+  .orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .order-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+
+      .order-info {
+        flex: 1;
+
+        h3 {
+          margin: 0 0 0.5rem 0;
+          color: #2c3e50;
+          font-size: 1.1rem;
+        }
+
+        .order-date,
+        .user-id {
+          display: inline-block;
+          color: #666;
+          font-size: 0.9rem;
+          margin-right: 1rem;
+        }
+      }
+
+      .order-summary {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-right: 1rem;
+
+        .status {
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          color: white;
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+
+        .amount {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #2c3e50;
+          min-width: 120px;
+          text-align: right;
+        }
+      }
+
+      .toggle-btn {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #667eea;
+        padding: 0.5rem;
+      }
+    }
+
+    .order-details {
+      padding: 1.5rem;
+      background: #f9fafb;
+      border-top: 1px solid #eee;
+      animation: slideDown 0.3s ease;
+
+      .status-update-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 6px;
+        border-left: 4px solid #667eea;
+
+        label {
+          font-weight: 600;
+          color: #2c3e50;
+          white-space: nowrap;
+        }
+
+        select {
+          padding: 0.5rem 1rem;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 0.95rem;
+          cursor: pointer;
+          flex: 1;
+          max-width: 200px;
+
+          &:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+          }
+        }
+
+        .delete-btn {
+          padding: 0.5rem 1rem;
+          background-color: #f44336;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: background-color 0.3s ease;
+          white-space: nowrap;
+
+          &:hover {
+            background-color: #d32f2f;
+          }
+        }
+      }
+
+      .order-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+
+        .info-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 1rem;
+          background: white;
+          border-radius: 6px;
+          border: 1px solid #eee;
+
+          .label {
+            font-weight: 600;
+            color: #2c3e50;
+          }
+
+          .value {
+            color: #666;
+            text-align: right;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

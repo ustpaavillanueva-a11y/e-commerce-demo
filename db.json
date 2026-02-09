@@ -61,16 +61,6 @@
   ],
   "products": [
     {
-      "id": "1",
-      "ProductID": 1,
-      "name": "Laptop Pro",
-      "description": "High-performance laptop with 16GB RAM",
-      "imageUrl": "https://dummyimage.com/300x300/6c63ff/ffffff?text=Laptop",
-      "stock": 15,
-      "price": 59999,
-      "createdAt": "2026-01-05T09:00:00Z"
-    },
-    {
       "id": "2",
       "ProductID": 2,
       "name": "Wireless Mouse",
