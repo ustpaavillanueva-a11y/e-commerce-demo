@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../../../models';
 import { CartService, CartItem } from '../../../services/cart.service';
 
@@ -21,6 +22,7 @@ export class CartComponent implements OnInit {
   constructor(
     private router: Router,
     private cartService: CartService,
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
@@ -91,6 +93,31 @@ export class CartComponent implements OnInit {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem('cart', JSON.stringify(this.cartItems));
     }
+
+    // Save to JSON Server
+    const totalAmount = this.cartItems.reduce(
+      (sum: number, item: any) => sum + (item.price * item.quantity),
+      0,
+    );
+
+    const serverCart = {
+      id: 1,
+      CartID: 1,
+      UserID: 1,
+      items: this.cartItems,
+      totalAmount: totalAmount,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    this.http.put('http://localhost:3000/carts/1', serverCart).subscribe({
+      next: (response) => {
+        console.log('Cart saved to server:', response);
+      },
+      error: (err) => {
+        console.error('Error saving cart to server:', err);
+      },
+    });
   }
 
   checkout(): void {

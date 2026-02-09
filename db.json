@@ -194,26 +194,15 @@
       "UserID": 1,
       "items": [
         {
-          "id": 2,
-          "ProductID": 2,
-          "name": "Wireless Mouse",
-          "description": "Ergonomic wireless mouse with USB receiver",
-          "imageUrl": "https://dummyimage.com/300x300/6c63ff/ffffff?text=Mouse",
-          "stock": 50,
-          "price": 1299,
-          "createdAt": "2026-01-05T10:15:00Z",
-          "quantity": 1
-        },
-        {
-          "id": 1,
-          "ProductID": 1,
-          "name": "Laptop Pro",
-          "description": "High-performance laptop with 16GB RAM",
-          "imageUrl": "https://dummyimage.com/300x300/6c63ff/ffffff?text=Laptop",
-          "stock": 15,
-          "price": 59999,
-          "createdAt": "2026-01-05T09:00:00Z",
-          "quantity": 1
+          "id": "3",
+          "ProductID": 3,
+          "name": "USB-C Cable",
+          "description": "Fast charging USB-C cable, 2 meters",
+          "imageUrl": "https://dummyimage.com/300x300/6c63ff/ffffff?text=Cable",
+          "stock": 100,
+          "price": 499,
+          "createdAt": "2026-01-05T11:30:00Z",
+          "quantity": 2
         },
         {
           "id": "4",
@@ -224,23 +213,12 @@
           "stock": 25,
           "price": 4999,
           "createdAt": "2026-01-05T12:45:00Z",
-          "quantity": 2
-        },
-        {
-          "id": "3",
-          "ProductID": 3,
-          "name": "USB-C Cable",
-          "description": "Fast charging USB-C cable, 2 meters",
-          "imageUrl": "https://dummyimage.com/300x300/6c63ff/ffffff?text=Cable",
-          "stock": 100,
-          "price": 499,
-          "createdAt": "2026-01-05T11:30:00Z",
-          "quantity": 2
+          "quantity": 1
         }
       ],
-      "totalAmount": 72294,
-      "createdAt": "2026-02-09T06:49:55.015Z",
-      "updatedAt": "2026-02-09T06:49:55.015Z"
+      "totalAmount": 5997,
+      "createdAt": "2026-02-09T06:52:39.481Z",
+      "updatedAt": "2026-02-09T06:52:39.481Z"
     },
     {
       "id": "2",
