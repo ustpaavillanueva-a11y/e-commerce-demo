@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models';
 
@@ -21,6 +22,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private http: HttpClient,
     private router: Router,
   ) {}
 
@@ -83,9 +85,39 @@ export class ProductDetailComponent implements OnInit {
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));
-      console.log('Cart updated:', cart);
-      alert('Product added to cart!');
-      this.quantity = 1;
+      console.log('Cart updated in localStorage:', cart);
+
+      // Calculate total amount
+      const totalAmount = cart.reduce(
+        (sum: number, item: any) => sum + item.price * item.quantity,
+        0,
+      );
+
+      // Update JSON server cart
+      const serverCart = {
+        id: 1,
+        CartID: 1,
+        UserID: 1,
+        items: cart,
+        totalAmount: totalAmount,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+
+      console.log('Sending to server:', serverCart);
+
+      this.http.put('http://localhost:3000/carts/1', serverCart).subscribe({
+        next: (response) => {
+          console.log('Cart saved to server:', response);
+          alert('Product added to cart!');
+          this.quantity = 1;
+        },
+        error: (err) => {
+          console.error('Error saving to server:', err);
+          alert('Product added to your local cart!');
+          this.quantity = 1;
+        },
+      });
     } catch (error) {
       console.error('Error adding to cart:', error);
       alert('Error adding product to cart. Please try again.');
