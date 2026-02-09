@@ -18,6 +18,7 @@ export interface User {
 }
 
 export interface Product {
+  id: number;
   ProductID: number;
   name: string;
   description: string;

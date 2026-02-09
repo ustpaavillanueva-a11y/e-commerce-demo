@@ -99,14 +99,6 @@
       "stock": 8,
       "price": 24999,
       "createdAt": "2026-01-05T14:00:00Z"
-    },
-    {
-      "id": "a24c",
-      "name": "sad",
-      "description": "asd",
-      "imageUrl": "https://pngimg.com/uploads/computer_pc/computer_pc_PNG17489.png",
-      "stock": 1,
-      "price": 22
     }
   ],
   "orders": [

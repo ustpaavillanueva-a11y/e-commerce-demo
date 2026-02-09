@@ -86,6 +86,7 @@ export class AdminProductsComponent implements OnInit {
         return;
       }
 
+      // Use the 'id' field for JSON Server (or fall back to ProductID)
       const updateId = productToUpdate.id || this.editingId;
 
       this.productService.updateProduct(updateId, this.formData).subscribe({
@@ -118,11 +119,21 @@ export class AdminProductsComponent implements OnInit {
   }
 
   deleteProduct(product: Product): void {
-    if (confirm(`Are you sure you want to delete "${product.name}"?`)) {
-      // Use the 'id' field (JSON Server primary key), not ProductID
-      const productId = product.id || product.ProductID;
+    if (!product || !product.name) {
+      alert('Error: Invalid product');
+      return;
+    }
 
-      this.productService.deleteProduct(productId).subscribe({
+    if (confirm(`Are you sure you want to delete "${product.name}"?`)) {
+      // Use the 'id' field for JSON Server (or fall back to ProductID)
+      const deleteId = product.id || product.ProductID;
+
+      if (!deleteId) {
+        alert('Error: Cannot determine product ID');
+        return;
+      }
+
+      this.productService.deleteProduct(deleteId).subscribe({
         next: () => {
           alert('Product deleted successfully');
           this.loadProducts();
