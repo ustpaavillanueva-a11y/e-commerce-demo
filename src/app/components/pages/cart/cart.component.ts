@@ -225,6 +225,6 @@ export class CartComponent implements OnInit {
   }
 
   continueShopping(): void {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/home/products']);
   }
 }

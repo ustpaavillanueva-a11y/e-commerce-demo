@@ -9,6 +9,7 @@ import { CartComponent } from './components/pages/cart/cart.component';
 import { MyOrdersComponent } from './components/pages/my-orders/my-orders.component';
 import { AdminProductsComponent } from './components/pages/admin-products/admin-products.component';
 import { Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },

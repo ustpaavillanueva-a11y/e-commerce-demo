@@ -1,6 +1,11 @@
 <div class="login-container">
   <div class="login-card">
     <h1>Login</h1>
+
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+
     <form (ngSubmit)="login()">
       <div class="form-group">
         <label for="email">Email</label>
@@ -11,6 +16,7 @@
           name="email"
           placeholder="Enter your email"
           required
+          [disabled]="loading"
         />
       </div>
       <div class="form-group">
@@ -22,9 +28,21 @@
           name="password"
           placeholder="Enter your password"
           required
+          [disabled]="loading"
         />
       </div>
-      <button type="submit" class="login-btn">Login</button>
+      <button type="submit" class="login-btn" [disabled]="loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
     </form>
+
+    <div class="demo-credentials">
+      <p>Demo Credentials:</p>
+      <ul>
+        <li><strong>Admin:</strong> admin&#64;ecommerce.com / admin123</li>
+        <li><strong>User:</strong> user&#64;example.com / user123</li>
+        <li><strong>Customer:</strong> customer&#64;example.com / customer123</li>
+      </ul>
+    </div>
   </div>
 </div>

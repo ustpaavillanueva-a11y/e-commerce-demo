@@ -17,4 +17,125 @@
     gap: 1rem;
     align-items: center;
   }
+
+  .user-profile-dropdown {
+    position: relative;
+    display: inline-block;
+
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1rem;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      color: #333;
+      font-weight: 500;
+
+      .profile-icon {
+        font-size: 1.2rem;
+      }
+
+      .user-name {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .dropdown-arrow {
+        font-size: 0.75rem;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        background-color: #f9f9f9;
+        border-color: #bbb;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.active .profile-btn .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      min-width: 250px;
+      margin-top: 0.5rem;
+      z-index: 1000;
+      animation: slideDown 0.3s ease;
+
+      .dropdown-header {
+        padding: 1rem;
+        text-align: center;
+
+        .user-email {
+          margin: 0;
+          font-weight: 600;
+          color: #2c3e50;
+          font-size: 0.95rem;
+        }
+
+        .user-id {
+          margin: 0.25rem 0 0 0;
+          color: #999;
+          font-size: 0.85rem;
+        }
+      }
+
+      hr {
+        margin: 0;
+        border: none;
+        border-top: 1px solid #eee;
+      }
+
+      .logout-btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background-color: transparent;
+        border: none;
+        border-radius: 0 0 8px 8px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        color: #dc3545;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+
+        &:hover {
+          background-color: #fee;
+        }
+
+        &:active {
+          background-color: #fdd;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
