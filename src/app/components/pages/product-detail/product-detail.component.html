@@ -1,0 +1,74 @@
+<div class="product-detail-container">
+  <button (click)="goBack()" class="btn-back">← Back to Products</button>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading product...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && !error && product" class="product-detail">
+    <div class="product-image">
+      <img [src]="product.imageUrl" [alt]="product.name" />
+    </div>
+
+    <div class="product-details">
+      <h1>{{ product.name }}</h1>
+      <p class="description">{{ product.description }}</p>
+
+      <div class="product-meta">
+        <div class="meta-item">
+          <span class="label">Price:</span>
+          <span class="value price" *ngIf="product.price"
+            >₱{{ product.price | number }}</span
+          >
+        </div>
+
+        <div class="meta-item">
+          <span class="label">Stock:</span>
+          <span
+            class="value"
+            [ngClass]="product.stock > 0 ? 'in-stock' : 'out-of-stock'"
+          >
+            {{
+              product.stock > 0 ? product.stock + " available" : "Out of Stock"
+            }}
+          </span>
+        </div>
+
+        <div class="meta-item">
+          <span class="label">Created:</span>
+          <span class="value">{{
+            product.createdAt | date: "MMM d, yyyy"
+          }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="product.stock > 0" class="purchase-section">
+        <div class="quantity-selector">
+          <label>Quantity:</label>
+          <div class="quantity-control">
+            <button (click)="decreaseQuantity()" class="btn-quantity">-</button>
+            <input
+              type="number"
+              [(ngModel)]="quantity"
+              [max]="product.stock"
+              readonly
+            />
+            <button (click)="increaseQuantity()" class="btn-quantity">+</button>
+          </div>
+        </div>
+
+        <button (click)="addToCart()" class="btn-add-to-cart">
+          Add to Cart
+        </button>
+      </div>
+
+      <div *ngIf="product.stock === 0" class="out-of-stock-message">
+        <p>This product is currently out of stock</p>
+      </div>
+    </div>
+  </div>
+</div>

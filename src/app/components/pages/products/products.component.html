@@ -1,0 +1,55 @@
+<div class="products-container">
+  <h1>Products</h1>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading products...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+    <button (click)="loadProducts()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error && products.length === 0" class="no-products">
+    <p>No products available</p>
+  </div>
+
+  <div class="products-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="product-image">
+        <img [src]="product.imageUrl" [alt]="product.name" />
+      </div>
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="description">{{ product.description }}</p>
+        <div class="product-footer">
+          <span *ngIf="product.price" class="price"
+            >₱{{ product.price | number }}</span
+          >
+          <span
+            class="stock"
+            [ngClass]="product.stock > 0 ? 'in-stock' : 'out-of-stock'"
+          >
+            {{
+              product.stock > 0
+                ? "In Stock (" + product.stock + ")"
+                : "Out of Stock"
+            }}
+          </span>
+        </div>
+        <div class="actions">
+          <button (click)="viewProduct(product.ProductID)" class="btn-view">
+            View
+          </button>
+          <button
+            *ngIf="product.stock > 0"
+            (click)="addToCart(product)"
+            class="btn-add-cart"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
