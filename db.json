@@ -135,6 +135,22 @@
       "orderDate": "2026-01-15T09:15:00Z",
       "status": "processing",
       "id": "5503"
+    },
+    {
+      "id": "7d74",
+      "OrderID": 4,
+      "userID": 1,
+      "totalAmount": 5997,
+      "orderDate": "2026-02-09T06:58:45.470Z",
+      "status": "processing"
+    },
+    {
+      "id": "50ef",
+      "OrderID": 5,
+      "userID": 1,
+      "totalAmount": 1299,
+      "orderDate": "2026-02-09T06:59:23.256Z",
+      "status": "processing"
     }
   ],
   "orderItems": [
@@ -185,6 +201,27 @@
       "quantity": 4,
       "price": 499,
       "id": "4678"
+    },
+    {
+      "id": "1caf",
+      "orderID": 4,
+      "productID": 3,
+      "quantity": 2,
+      "price": 499
+    },
+    {
+      "id": "0d2f",
+      "orderID": 4,
+      "productID": 4,
+      "quantity": 1,
+      "price": 4999
+    },
+    {
+      "id": "33db",
+      "orderID": 5,
+      "productID": 2,
+      "quantity": 1,
+      "price": 1299
     }
   ],
   "carts": [
@@ -192,33 +229,10 @@
       "id": "1",
       "CartID": 1,
       "UserID": 1,
-      "items": [
-        {
-          "id": "3",
-          "ProductID": 3,
-          "name": "USB-C Cable",
-          "description": "Fast charging USB-C cable, 2 meters",
-          "imageUrl": "https://dummyimage.com/300x300/6c63ff/ffffff?text=Cable",
-          "stock": 100,
-          "price": 499,
-          "createdAt": "2026-01-05T11:30:00Z",
-          "quantity": 2
-        },
-        {
-          "id": "4",
-          "ProductID": 4,
-          "name": "Mechanical Keyboard",
-          "description": "RGB Mechanical keyboard with Cherry MX switches",
-          "imageUrl": "https://dummyimage.com/300x300/6c63ff/ffffff?text=Keyboard",
-          "stock": 25,
-          "price": 4999,
-          "createdAt": "2026-01-05T12:45:00Z",
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 5997,
-      "createdAt": "2026-02-09T06:52:39.481Z",
-      "updatedAt": "2026-02-09T06:52:39.481Z"
+      "items": [],
+      "totalAmount": 0,
+      "createdAt": "2026-02-09T06:59:23.279Z",
+      "updatedAt": "2026-02-09T06:59:23.279Z"
     },
     {
       "id": "2",
